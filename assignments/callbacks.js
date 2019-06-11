@@ -2,6 +2,8 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
+const duplicates = ['Xbox', 'PS4', 'Xbox', 'PC', 'Nintendo Switch', 'PS4'];
+
 /* 
 
   //Given this problem: 
@@ -70,4 +72,5 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+
 }
