@@ -2,7 +2,7 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
-const duplicates = ['Xbox', 'PS4', 'Xbox', 'PC', 'Nintendo Switch', 'PS4'];
+
 
 /* 
 
@@ -26,20 +26,21 @@ const duplicates = ['Xbox', 'PS4', 'Xbox', 'PC', 'Nintendo Switch', 'PS4'];
 
 */
 
+const cbLog =  (item) => console.log(item);
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
   return cb(arr.length);
 }
 
-getLength(items, (item) => console.log(item));
+getLength(items, cbLog);
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
   return cb(arr[arr.length - 1]);
 }
 
-last(items, (item) => console.log(item));
+last(items, cbLog);
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
@@ -47,7 +48,7 @@ function sumNums(x, y, cb) {
   cb(sum);
 }
 
-sumNums(5, 8, (item) => console.log(item));
+sumNums(5, 8, cbLog);
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
@@ -55,7 +56,7 @@ function multiplyNums(x, y, cb) {
   cb(result);
 }
 
-multiplyNums(5, 8, (item) => console.log(item));
+multiplyNums(5, 8, cbLog);
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
@@ -63,14 +64,26 @@ function contains(item, list, cb) {
   list.includes(item) ? cb(true) : cb(false);
 }
 
-contains('Notebook', items, (item) => console.log(item));
-contains('Eraser', items, (item) => console.log(item));
+contains('Notebook', items, cbLog);
+contains('Eraser', items, cbLog);
 
 /* STRETCH PROBLEM */
+
+const duplicates = ['Xbox', 'PS4', 'Xbox', 'PC', 'Switch', 'PS4', 'Xbox'];
+
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
 
+  let noDuplicates = array.filter(function(item, index, inputArray) {
+    return inputArray.indexOf(item) === index;
+  });
+  
+  cb(noDuplicates);
 }
+
+removeDuplicates(duplicates, cbLog);
+
+////// (4) ["Xbox", "PS4", "PC", "Switch"]
