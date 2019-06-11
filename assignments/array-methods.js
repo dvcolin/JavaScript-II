@@ -56,28 +56,49 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+runners.forEach(function(runner) {
+    let runnerFullName = runner.first_name + ' ' + runner.last_name;
+    fullName.push(runnerFullName);
+})
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+let allCaps = runners.map(runner => runner.first_name.toUpperCase());
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+let largeShirts = runners.filter(runner => runner.shirt_size === 'L');
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+let donations = runners.map(runner => runner.donation);
+let reducer = (acc, current) => acc + current;
+ticketPriceTotal = donations.reduce(reducer);
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// In order to have each runner sign in at the correct stand, sort all the runners' last names alphabetically into the sortedLastNames array. 
+let lastNames = runners.map(runner => runner.last_name);
+
+let sortedLastNames = lastNames.sort();
+console.log(sortedLastNames);
+
 
 // Problem 2
+// All runners who donated 200 dollars or more should receive a free t-shirt and a thank you letter for their contribution. Filter those runners into an array called topDonations.
+let topDonations = runners.filter(runner => runner.donation >= 200);
+console.log(topDonations);
+
 
 // Problem 3
+// After the event, there is a planned celebration for Skinix employees, celebrating their 10th year as a company. Filter out all Skinix employees into a skinixEnployees array.
+let skinixEmployees = runners.filter(runner => runner.company_name === 'Skinix');
+console.log(skinixEmployees);
