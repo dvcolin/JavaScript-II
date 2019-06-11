@@ -1,5 +1,20 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
+let greeting = 'Hello my name is '
+
+function hello() {
+    let firstName = 'George ';
+
+    function yo(){
+      let lastName = 'Washington';
+      return console.log(greeting + firstName + lastName);
+    }
+
+    return yo();
+}
+
+hello();
+
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
